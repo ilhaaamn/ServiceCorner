@@ -99,6 +99,7 @@ create index data_transaksi_sparepart_data_sparepart_id_part_fk
 
 create index data_transaksi_sparepart_data_transaksi_master_id_master_fk
   on data_transaksi_sparepart (id_master);
+<<<<<<< HEAD
 >>>>>>> f68a009b34c0f559578234f06d925304302ec20e
 
 Source Server         : local
@@ -210,6 +211,8 @@ INSERT INTO `data_sparepart` VALUES ('RS75', 'RING SET (0.75)', '368000');
 INSERT INTO `data_sparepart` VALUES ('SH', 'SOCKET HEADLIGHT ASSY', '48000');
 INSERT INTO `data_sparepart` VALUES ('SRL', 'STAY RADIATOR LOWER', '6000');
 INSERT INTO `data_sparepart` VALUES ('SWA', 'SWINGARM RR ASSY', '370000');
+=======
+>>>>>>> f68a009b34c0f559578234f06d925304302ec20e
 
 -- ----------------------------
 -- Table structure for data_transaksi
