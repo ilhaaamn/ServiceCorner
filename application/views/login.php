@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 		
 		<!-- Custom CSS -->
-		<link rel="stylesheet" type="text/css" href="../../assets/css/login.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/login.css">
 </head>
   <body>
 
