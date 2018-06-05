@@ -6,17 +6,18 @@
  * Time: 4:28 AM
  */
 
-class CtrlKasir extends CI_Controller
+class Kasir extends CI_Controller
 {
     public function __construct()
     {
+        parent::__construct();
         $this->load->helper('url');
         $this->load->library('session');
     }
 
     public function index()
     {
-        $this->load->view("register.php");
+        $this->load->view("login.php");
     }
 
     function login(){
