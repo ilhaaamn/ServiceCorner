@@ -23,21 +23,26 @@ class Kasir extends CI_Controller
     function login(){
         $this->load->model('ModelKasir');
         $user_login=array(
-            'user_email'=>$this->input->post('user_email'),
-            'user_password'=>md5($this->input->post('user_password'))
+            'username'=>$this->input->post('username'),
+            'user_password'=>md5($this->input->post('password'))
         );
 
-        $data=$this->ModelKasir->login($user_login['user_email'],$user_login['user_password']);
+        $data=$this->ModelKasir->login($user_login['username'],$user_login['user_password']);
         if($data)
         {
-            $this->session->set_userdata('user_id', $data['id_kasir']);
-            $this->session->set_userdata('user_email', $data['username']);
+            $this->session->set_flashdata('success_msg', 'Login Success');
 
-            redirect(base_url() . 'home');
+            $this->session->set_userdata('id_kasir', $data['id_kasir']);
+            $this->session->set_userdata('username', $data['username']);
+
+            echo $this->session->flashdata('success_msg');
         }
         else{
             $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-            redirect(base_url().'home');
+            //redirect(base_url().'home');
+            echo $this->session->flashdata('error_msg');
+            echo $this->input->post('password');
+            print_r($user_login);
         }
     }
 

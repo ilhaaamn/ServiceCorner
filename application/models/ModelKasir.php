@@ -24,7 +24,7 @@ class ModelKasir extends CI_Model
 
         if($query->result())
         {
-            return $query->row();
+            return $query->row_array();
         }
         else{
             return false;

@@ -24,15 +24,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="modal-content">
                     <div class="col-12">
                         <span class="login-form-title">Login</span>
-                        <div class="form-group">
-                            <span class="lnr lnr-user"></span>
-                            <input type="text" name="username" id="username" class="form-control" placeholder="Username">
-                        </div>
-                        <div class="form-group">
-                            <span class="lnr lnr-lock"></span>
-                            <input type="password" name="pass" id="pass" class="form-control" placeholder="Password">
-                        </div>
-                        <button type="submit" class="btn login-btn">Login</button>
+                        <form action="<?php echo base_url('kasir/login')?>" method="post">
+                            <div class="form-group">
+                                <span class="lnr lnr-user"></span>
+                                <input type="text" name="username" id="username" class="form-control" placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <span class="lnr lnr-lock"></span>
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn login-btn">Login</button>
+                        </form>
                     </div>
                 </div>
                 <!-- End of Modal Content -->
