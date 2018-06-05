@@ -31,7 +31,7 @@ class ModelKasir extends CI_Model
         }
     }
 
-    public function insertKasi($data){
+    public function insertKasir($data){
         $this->db->insert('data_kasir', $data);
     }
 }
