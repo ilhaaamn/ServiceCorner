@@ -6,7 +6,7 @@
  * Time: 12:38 AM
  */
 
-class ModelSparepart extends CI_Model
+class ModelLayanan extends CI_Model
 {
     public function getAll(){
         $query = $this->db->get('data_layanan');
