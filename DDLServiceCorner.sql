@@ -99,8 +99,6 @@ create index data_transaksi_sparepart_data_sparepart_id_part_fk
 
 create index data_transaksi_sparepart_data_transaksi_master_id_master_fk
   on data_transaksi_sparepart (id_master);
-<<<<<<< HEAD
->>>>>>> f68a009b34c0f559578234f06d925304302ec20e
 
 Source Server         : local
 Source Server Version : 100131
