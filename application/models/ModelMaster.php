@@ -23,7 +23,7 @@ class ModelMaster extends CI_Model
     }
 
     public function updateMaster($data){
-        $query = $this->db->query('UPDATE DATA_TRANSAKSI SET total_tagihan = "' . $data->total_tagihan . '" where id_booking = ' . $data->id_booking . ';');
+        $query = $this->db->query('UPDATE DATA_TRANSAKSI SET total_tagihan = "' . $data->total_tagihan . '" where id_master = ' . $data->id_booking . ';');
     }
 
 }
