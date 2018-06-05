@@ -1,0 +1,7 @@
+body {
+    background: #ddd;
+}
+
+.modal-content {
+    padding: 50px 20px;
+}
