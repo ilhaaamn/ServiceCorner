@@ -8,11 +8,7 @@
 
 class ModelKasir extends CI_Model
 {
-    public $id_kasir;
-    public $username;
-    public $hash_password;
-
-       function getAll(){
+    function getAll(){
         $query = $this->db->get('data_kasir');
         return $query->result();
     }
