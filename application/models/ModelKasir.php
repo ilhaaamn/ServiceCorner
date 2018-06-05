@@ -18,9 +18,9 @@ class ModelKasir extends CI_Model
         return $query->row();
     }
 
-    public function login($id,$pass){
+    public function login($username,$pass){
 
-        $query = $this->db->get_where('data_kasir', array('id_kasir' => $id, 'hash_password' => $pass));
+        $query = $this->db->get_where('data_kasir', array('username' => $username, 'hash_password' => $pass));
 
         if($query->result())
         {
