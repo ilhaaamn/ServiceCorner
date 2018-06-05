@@ -8,12 +8,12 @@
 
 class ModelKasir extends CI_Model
 {
-    function getAll(){
+    public function getAll(){
         $query = $this->db->get('data_kasir');
         return $query->result();
     }
 
-    function getbyId($data){
+    public function getbyId($data){
         $query = $this->db->get_where('data_kasir', array('id_kasir' => $data));
         return $query->row();
     }
@@ -29,5 +29,9 @@ class ModelKasir extends CI_Model
         else{
             return false;
         }
+    }
+
+    public function insertKasi($data){
+        $this->db->insert('data_kasir', $data);
     }
 }
