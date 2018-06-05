@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /*
 Navicat MySQL Data Transfer
 =======
@@ -211,8 +211,8 @@ INSERT INTO `data_sparepart` VALUES ('RS75', 'RING SET (0.75)', '368000');
 INSERT INTO `data_sparepart` VALUES ('SH', 'SOCKET HEADLIGHT ASSY', '48000');
 INSERT INTO `data_sparepart` VALUES ('SRL', 'STAY RADIATOR LOWER', '6000');
 INSERT INTO `data_sparepart` VALUES ('SWA', 'SWINGARM RR ASSY', '370000');
-=======
->>>>>>> f68a009b34c0f559578234f06d925304302ec20e
+
+
 
 -- ----------------------------
 -- Table structure for data_transaksi
