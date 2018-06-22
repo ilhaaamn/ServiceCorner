@@ -37,6 +37,8 @@ class Kasir extends CI_Controller
             $this->session->set_userdata('username', $data['username']);
 
             echo $this->session->flashdata('success_msg');
+
+            redirect(base_url('kasir'));
         }
         else{
             $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
@@ -49,6 +51,6 @@ class Kasir extends CI_Controller
 
     public function logout(){
         $this->session->sess_destroy();
-        redirect(base_url('home'), 'refresh');
+        redirect(base_url(), 'refresh');
     }
 }
