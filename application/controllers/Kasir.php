@@ -17,7 +17,8 @@ class Kasir extends CI_Controller
 
     public function index()
     {
-        $this->load->view("login.php");
+        // $this->load->view("login.php");
+        $this->load->view("index.php");
     }
 
     function login(){
