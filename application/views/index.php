@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Document</title>
+  <title>Penjualan</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -89,13 +89,8 @@
             <h4>Spare Parts</h4>
             <div id="spare-parts">
               <form action="" class="form-inline">
-                <select name="" id="select" class="form-control">
-                  <option value="">-- pilih spare part --</option>
-                  <option value="">front brake</option>
-                  <option value="">rear brake</option>
-                  <option value="">chain</option>
-                  <option value="">head lamp</option>
-                </select>
+                <input type="text" class="form-control" name="search-text" id="search-text" placeholder="cari sparepart">
+                <!-- <div id="result"></div> -->
                 <button type="submit" class="btn btn-success" id="btn-tambah">tambah</button>
               </form>
             </div>
@@ -159,13 +154,64 @@
   
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS, then Linearicons JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
   <script src="<?php echo base_url('assets/js/select2.min.js'); ?>"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
   <script>
     $('select').select2();
+  </script>
+
+  <!-- BELOM BISA -->
+  <script>
+    $(document).ready(function(){
+
+      $('#search-text').typeahead({
+        source:function(query, result){
+          $.ajax({
+            url:"<?php echo base_url(); ?>ajaxsearch/fetch",
+            method:"POST",
+            data:{query:query},
+            dataType:"json",
+            success:function(data){
+              result($.map(data, function(item){
+                return item;
+              }));
+            }
+          })
+        }
+      });
+
+      // load_data();
+      
+      // function load_data(query, result){
+      //   $.ajax({
+      //     url:"<?php echo base_url(); ?>ajaxsearch/fetch",
+      //     method:"POST",
+      //     data:{query:query},
+      //     dataType:"json",
+      //     success:function(data){
+      //       // $('#result').html(data);
+      //       result($.map(data, function(item){
+      //         return item;
+      //       }));
+      //     }
+      //   })
+      // }
+
+      // $('#search-text').keyup(function(){
+      //   var search = $(this).val();
+      //   if(search != ''){
+      //     load_data(search);
+      //   }
+      //   else{
+      //     load_data();
+      //   }
+      // });
+    });
   </script>
 </body>
 </html>
