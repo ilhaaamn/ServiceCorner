@@ -89,8 +89,7 @@
             <h4>Spare Parts</h4>
             <div id="spare-parts">
               <form action="" class="form-inline">
-                <input type="text" class="form-control" name="search-text" id="search-text" placeholder="cari sparepart">
-                <!-- <div id="result"></div> -->
+                <input type="text" class="form-control" name="spare-part" id="spare-part" placeholder="cari sparepart">
                 <button type="submit" class="btn btn-success" id="btn-tambah">tambah</button>
               </form>
             </div>
@@ -114,16 +113,10 @@
             </table>
 
             <h4>Service</h4>
-            <div id="service">
+            <div id="services">
               <form action="" class="form-inline">
-              <select name="" id="select" class="form-control">
-                <option value="">-- pilih jenis service --</option>
-                <option value="">service 1</option>
-                <option value="">service 2</option>
-                <option value="">service 3</option>
-                <option value="">service 4</option>
-              </select>
-              <button type="submit" class="btn btn-success" id="btn-tambah">tambah</button>
+                <input type="text" class="form-control" name="service" id="service" placeholder="cari service">
+                <button type="submit" class="btn btn-success" id="btn-tambah">tambah</button>
               </form>
             </div>
             <table class="table table-bordered">
@@ -155,7 +148,6 @@
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS, then Linearicons JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
@@ -165,52 +157,46 @@
     $('select').select2();
   </script>
 
-  <!-- BELOM BISA -->
+  <!-- ajax typeahead -->
   <script>
     $(document).ready(function(){
-
-      $('#search-text').typeahead({
-        source:function(query, result){
-          $.ajax({
-            url:"<?php echo base_url(); ?>ajaxsearch/fetch",
-            method:"POST",
-            data:{query:query},
-            dataType:"json",
-            success:function(data){
-              result($.map(data, function(item){
-                return item;
-              }));
-            }
-          })
+  
+      $('#spare-part').typeahead({
+        source: function(query, result)
+        {
+        $.ajax({
+          url:"<?php echo base_url('ajaxsearch/fetch'); ?>",
+          method:"POST",
+          data:{query:query},
+          dataType:"json",
+          success:function(data)
+          {
+          result($.map(data, function(item){
+            return item;
+          }));
+          }
+        })
         }
       });
 
-      // load_data();
-      
-      // function load_data(query, result){
-      //   $.ajax({
-      //     url:"<?php echo base_url(); ?>ajaxsearch/fetch",
-      //     method:"POST",
-      //     data:{query:query},
-      //     dataType:"json",
-      //     success:function(data){
-      //       // $('#result').html(data);
-      //       result($.map(data, function(item){
-      //         return item;
-      //       }));
-      //     }
-      //   })
-      // }
-
-      // $('#search-text').keyup(function(){
-      //   var search = $(this).val();
-      //   if(search != ''){
-      //     load_data(search);
-      //   }
-      //   else{
-      //     load_data();
-      //   }
-      // });
+      $('#service').typeahead({
+        source: function(query, result)
+        {
+        $.ajax({
+          url:"<?php echo base_url('ajaxsearch/fetch1'); ?>",
+          method:"POST",
+          data:{query:query},
+          dataType:"json",
+          success:function(data)
+          {
+          result($.map(data, function(item){
+            return item;
+          }));
+          }
+        })
+        }
+      });
+    
     });
   </script>
 </body>
