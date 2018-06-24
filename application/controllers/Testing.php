@@ -19,7 +19,7 @@ class Testing extends CI_Controller
     {
         $user_id=$this->session->userdata('user_id');
         $user_role=$this->session->userdata('user_role');
-        $this->load->view("index.php");
+        $this->load->view("Transaksi.php");
     }
 
 }

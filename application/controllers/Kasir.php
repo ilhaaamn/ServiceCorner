@@ -13,6 +13,7 @@ class Kasir extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('session');
+        $this->load->model('m_grafik');
     }
 
     public function index()
@@ -20,7 +21,20 @@ class Kasir extends CI_Controller
         $user_id=$this->session->userdata('id_kasir');
         $user_role=$this->session->userdata('username');
         if ($user_id && $user_role){
-            $this->load->view("index.php");
+            $x['data']=$this->m_grafik->get_data_stok();
+            //print_r($x);
+            $this->load->view("Dashboard.php", $x);
+        }
+        else{
+            redirect(base_url());
+        }
+    }
+
+    function transaksi(){
+        $user_id=$this->session->userdata('id_kasir');
+        $user_role=$this->session->userdata('username');
+        if ($user_id && $user_role){
+            $this->load->view("Transaksi.php");
         }
         else{
             redirect(base_url());

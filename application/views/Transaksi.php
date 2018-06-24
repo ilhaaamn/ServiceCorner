@@ -44,10 +44,10 @@
                 <div class="sidebar">
                     <ul class="sidebar-nav">
                         <li>
-                            <a href=""><span class="lnr lnr-home"></span>Dashboard</a>
+                            <a href="<?php echo base_url()?>"><span class="lnr lnr-home"></span>Dashboard</a>
                         </li>
                         <li>
-                            <a href=""><span class="lnr lnr-cart"></span>Penjualan</a>
+                            <a href="<?php echo base_url('kasir/transaksi')?>"><span class="lnr lnr-cart"></span>Penjualan</a>
                         </li>
                     </ul>
                 </div>
