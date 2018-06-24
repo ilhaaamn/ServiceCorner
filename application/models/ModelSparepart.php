@@ -14,8 +14,22 @@ class ModelSparepart extends CI_Model
     }
 
     public function getbyId($data){
-        $query = $this->db->get_where('data_sparepart', array('id_sparepart' => $data));
-        return $query->row();
+        $query = $this->db->get_where('data_sparepart', array('id_part' => $data));
+        return $query->result();
+    }
+
+    public function getbyName($data){
+        $query = $this->db->get_where('data_sparepart', array('nama' => $data));
+        return $query->first_row();
+    }
+
+    public function getLike($data){
+        $this->db->select('*');
+        $this->db->from('data_sparepart');
+        $this->db->like('nama', $data);
+        $query = $this->db->get();
+
+        return $query->result();
     }
 
     public function insertSparepart($data){

@@ -20,6 +20,8 @@ class ModelMaster extends CI_Model
 
     public function insertTransaksi($data){
         $this->db->insert('data_transaksi', $data);
+        $insert_id = $this->db->insert_id();
+        return  $insert_id;
     }
 
     public function updateMaster($data){

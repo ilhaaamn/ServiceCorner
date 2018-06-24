@@ -17,8 +17,14 @@ class Kasir extends CI_Controller
 
     public function index()
     {
-        // $this->load->view("login.php");
-        $this->load->view("index.php");
+        $user_id=$this->session->userdata('id_kasir');
+        $user_role=$this->session->userdata('username');
+        if ($user_id && $user_role){
+            $this->load->view("index.php");
+        }
+        else{
+            redirect(base_url());
+        }
     }
 
     function login(){

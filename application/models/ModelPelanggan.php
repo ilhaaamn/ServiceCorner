@@ -25,5 +25,7 @@ class ModelPelanggan extends CI_Model
 
     public function insertPelanggan($data){
         $this->db->insert('data_pelanggan', $data);
+        $insert_id = $this->db->insert_id();
+        return  $insert_id;
     }
 }

@@ -17,6 +17,9 @@ class Testing extends CI_Controller
 
     public function index()
     {
+        $user_id=$this->session->userdata('user_id');
+        $user_role=$this->session->userdata('user_role');
         $this->load->view("index.php");
     }
+
 }
