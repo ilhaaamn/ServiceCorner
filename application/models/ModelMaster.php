@@ -35,7 +35,7 @@ class ModelMaster extends CI_Model
     }
 
     public function getPart($id){
-        $query = $this->db->query("SELECT nama,harga FROM data_transaksi inner join data_detail_sparepart dds on data_transaksi.id_master = dds.id_master inner join data_sparepart sparepart on dds.id_part = sparepart.id_part where data_transaksi.id_master = '".$id."';");
+        $query = $this->db->query("SELECT nama,harga,jumlah,total_biaya FROM data_transaksi inner join data_detail_sparepart dds on data_transaksi.id_master = dds.id_master inner join data_sparepart sparepart on dds.id_part = sparepart.id_part where data_transaksi.id_master = '".$id."';");
 
         return $query->result();
     }

@@ -19,7 +19,8 @@ class Service extends CI_Controller
     {
         $this->load->model('ModelMaster');
 
-        $id_master = $this->session->flashdata('id_master');
+        //$id_master = $this->session->flashdata('id_master');
+        $id_master = '46';
         $data['pelanggan'] = $this->ModelMaster->getPelanggan($id_master);
         $data['sparepart'] = $this->ModelMaster->getPart($id_master);
         $data['layanan'] = $this->ModelMaster->getService($id_master);
