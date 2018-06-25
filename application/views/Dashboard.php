@@ -21,6 +21,16 @@
             font-family: Verdana,Arial,sans-serif,Segoe UI;
             font-size: 12px;
         }
+        .w-25 {
+            float: left;
+            border: none;
+            font-size: 40px;
+        }
+        p {
+            font-family: Verdana,Arial,sans-serif,Segoe UI;
+            font-size: 12px;
+            color: #999;
+        }
     </style>
 
     <?php
@@ -84,6 +94,59 @@
                         <h4>Grafik Service</h4>
                         <canvas id="layanan" width="1000" height="400"></canvas>
                     </div>
+                    
+                </div>
+                <div class="row container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
+                    <div class="col-sm-3">
+                        <div class="card text-right">
+                        <div class="card-body">
+                            <div class="card w-25">
+                                <span class="lnr lnr-users"></span>
+                            </div>
+                            <p class="card-title">Total Pelanggan</p>
+                            <h5 class="card-text">236</h5>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card text-right">
+                        <div class="card-body">
+                            <p class="card-title"></i>Total provit</p>
+                            <h5 class="card-text">12000000</h5>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card text-right">
+                        <div class="card-body">
+                            <p class="card-title">Total Part Terjual</p>
+                            <h5 class="card-text">98</h5>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card text-right">
+                        <div class="card-body">
+                            <p class="card-title">Total Pelayanan Service</p>
+                            <h5 class="card-text">69</h5>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
+                    <table class="table  table-responsive">
+                    <table class="table table-bordered tr_input" id="item_table" style="background-color: white">
+                        <tr>
+                            <th style="width: 5%">No.</th>
+                            <th>Transaksi</th>
+                            <th>Detail</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
