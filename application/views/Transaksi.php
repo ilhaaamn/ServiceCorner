@@ -21,6 +21,15 @@
             font-family: Verdana,Arial,sans-serif,Segoe UI;
             font-size: 12px;
         }
+
+        .ui-autocomplete {
+            max-height: 200px;
+            overflow-y: auto;
+            /* prevent horizontal scrollbar */
+            overflow-x: hidden;
+            /* add padding to account for vertical scrollbar */
+            padding-right: 20px;
+        }
     </style>
 </head>
 <body>
@@ -46,7 +55,7 @@
                         <li>
                             <a href="<?php echo base_url()?>"><span class="lnr lnr-home"></span>Dashboard</a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="<?php echo base_url('kasir/transaksi')?>"><span class="lnr lnr-cart"></span>Penjualan</a>
                         </li>
                     </ul>

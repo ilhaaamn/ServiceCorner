@@ -15,9 +15,23 @@ class Service extends CI_Controller
         $this->load->library('session');
     }
 
-    public function resi()
+    public function print_struk()
     {
-        
+        $this->load->model('ModelMaster');
+
+        $id_master = $this->session->flashdata('id_master');
+        $data['pelanggan'] = $this->ModelMaster->getPelanggan($id_master);
+        $data['sparepart'] = $this->ModelMaster->getPart($id_master);
+        $data['layanan'] = $this->ModelMaster->getService($id_master);
+        $data['master'] = $this->ModelMaster->getbyId($id_master);
+
+        if ($id_master){
+            $this->load->view('struk', $data);
+        }
+        else
+        {
+            redirect(base_url('kasir/transaksi'));
+        }
     }
 
     public function insertData()
@@ -47,7 +61,6 @@ class Service extends CI_Controller
         $total = 0;
         foreach( $item_price as $index => $item ) {
             $total = $total + $item*(int)$item_quantity[$index];
-            echo $item_quantity[$index];
         }
 
         $service_name = $this->input->post("service_name");
@@ -91,6 +104,9 @@ class Service extends CI_Controller
             $this->ModelDetailLayanan->insertDetail($data);
         }
 
+        $this->session->set_flashdata('id_master', $id_master);
+        redirect(base_url('service/print_struk'));
 
     }
+
 }

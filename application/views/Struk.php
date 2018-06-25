@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Kasir | Dashboard</title>
+    <title>Penjualan</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,20 +22,6 @@
             font-size: 12px;
         }
     </style>
-
-    <?php
-    foreach($data as $data){
-        $tanggal[] = $data->tanggal;
-        //echo $data->tanggal."<br>";
-        $total[] = (float) $data->total;
-    }
-
-    foreach($layanan as $data){
-        $tanggalLayanan[] = $data->tanggal;
-        //echo $data->tanggal."<br>";
-        $totalLayanan[] = (float) $data->total;
-    }
-    ?>
 </head>
 <body>
 <div id="wrapper">
@@ -57,7 +43,7 @@
             <div class="col-xs-12" id="sidebar-wrapper">
                 <div class="sidebar">
                     <ul class="sidebar-nav">
-                        <li class="active">
+                        <li>
                             <a href="<?php echo base_url()?>"><span class="lnr lnr-home"></span>Dashboard</a>
                         </li>
                         <li>
@@ -70,17 +56,14 @@
 
         <div class="col-xs-8">
             <div id="page-content-wrapper">
-                <h3>Dashboard</h3>
-                <div class="row container-fluid p-5 ml-1 rounded mt-4" style="background-color: whitesmoke">
-                    <div class="col-md-6">
-                        <h4>Grafik Penjulanan</h4>
-                        <canvas id="penjualan" width="1000" height="400"></canvas>
-                    </div>
+                <div class="row container-fluid">
+                    <?php
+                        print_r($pelanggan);
+                        print_r($sparepart);
+                        print_r($layanan);
+                        print_r($master);
 
-                    <div class="col-md-6">
-                        <h4>Grafik Service</h4>
-                        <canvas id="layanan" width="1000" height="400"></canvas>
-                    </div>
+                    ?>
                 </div>
             </div>
         </div>
@@ -101,56 +84,5 @@
 <script>
     $('select').select2();
 </script>
-
-<!--Load chart js-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-<script>
-
-    var ctx = document.getElementById('penjualan').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
-
-        // The data for our dataset
-        data: {
-            labels:<?php echo json_encode($tanggal);?>,
-            datasets: [{
-                label: "Penjualan Sparepart",
-                backgroundColor: 'rgba(60,141,188,0.9)',
-                borderColor: 'rgba(60,141,188,0.8)',
-                data: <?php echo json_encode($total);?>
-            }]
-        },
-
-        // Configuration options go here
-        options: {}
-    });
-
-</script>
-<script>
-    // backgroundColor: ["rgb(90, 208, 226)", "rgb(255, 155, 73)", "rgb(216, 60, 60)", "rgb(173, 62, 123)"],
-    //     borderColor: ["rgb(90, 208, 226)", "rgb(255, 155, 73)", "rgb(216, 60, 60)", "rgb(173, 62, 123)"],
-
-    var ctx = document.getElementById('layanan').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'bar',
-
-        // The data for our dataset
-        data: {
-            labels:<?php echo json_encode($tanggalLayanan);?>,
-            datasets: [{
-                label: "Pelayanan Service",
-                backgroundColor: 'rgb(216, 60, 60)',
-                borderColor: 'rgb(216, 60, 60)',
-                data: <?php echo json_encode($totalLayanan);?>
-            }]
-        },
-
-        // Configuration options go here
-        options: {}
-    });
-</script>
-
 </body>
 </html>

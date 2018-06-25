@@ -22,4 +22,11 @@ class Testing extends CI_Controller
         $this->load->view("Transaksi.php");
     }
 
+    public function test()
+    {
+        $this->load->model('TestingModel');
+        $x['data']=$this->TestingModel->get();
+        print_r($x);
+    }
+
 }
