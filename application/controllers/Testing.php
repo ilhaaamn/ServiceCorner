@@ -21,6 +21,10 @@ class Testing extends CI_Controller
         $user_role=$this->session->userdata('user_role');
         $this->load->view("Transaksi.php");
     }
+    
+    public function struk(){
+        $this->load->view("Struk.php");
+    }
 
     public function test()
     {
