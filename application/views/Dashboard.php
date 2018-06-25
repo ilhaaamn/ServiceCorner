@@ -84,7 +84,7 @@
         <div class="col-xs-8">
             <div id="page-content-wrapper">
                 <h3>Dashboard</h3>
-                <div class="row container-fluid p-5 ml-1 rounded mt-4" style="background-color: whitesmoke">
+                <div class="row container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
                     <div class="col-md-6">
                         <h4>Grafik Penjulanan</h4>
                         <canvas id="penjualan" width="1000" height="400"></canvas>
@@ -134,8 +134,8 @@
                     </div>
                 </div>
                 <div class="row container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
-                    <table class="table  table-responsive">
-                    <table class="table table-bordered tr_input" id="item_table" style="background-color: white">
+                    <h4>Tabel Transaksi</h4>
+                    <table class="table table-responsive table-bordered tr_input" id="" style="background-color: white">
                         <tr>
                             <th style="width: 5%">No.</th>
                             <th>Transaksi</th>
