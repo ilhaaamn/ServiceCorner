@@ -21,7 +21,15 @@ class Testing extends CI_Controller
         $user_role=$this->session->userdata('user_role');
         $this->load->view("Transaksi.php");
     }
-    
+
+    public function dashboard(){
+        $this->load->model('m_grafik');
+        $x['data']=$this->m_grafik->get_data_stok();
+        $x['layanan']=$this->m_grafik->get_detail_layanan();
+        //print_r($x);
+        $this->load->view("Dashboard.php", $x);
+    }
+
     public function struk(){
         $this->load->view("Struk.php");
     }
