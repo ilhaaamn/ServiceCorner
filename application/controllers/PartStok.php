@@ -27,4 +27,25 @@ class PartStok extends CI_Controller
         }
     }
 
+    public function updateStok($id_stok){
+        $user_id=$this->session->userdata('id_kasir');
+        $user_role=$this->session->userdata('username');
+        if ($user_id && $user_role) {
+            $this->load->model('ModelSparepart');
+
+            //$id_master = '46';
+            $data['data'] = $this->ModelSparepart->getbyId($id_stok);
+
+            if ($id_stok) {
+                $this->load->view('stok', $data);
+            } else {
+                redirect(base_url('partstok'));
+            }
+        }
+        else
+        {
+            redirect(base_url());
+        }
+    }
+
 }
