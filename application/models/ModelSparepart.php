@@ -54,7 +54,7 @@ class ModelSparepart extends CI_Model
     public function addStok($data){
         $result = $this->getbyId($data['id_part']);
         $row = $result[0];
-        $row->stok = $row->stok + $data['jumlah'];
+        $row->stok = $row->stok + $data['stok'];
 
         $this->db->where('id_part', $data['id_part']);
         $this->db->update('data_sparepart', $row);
