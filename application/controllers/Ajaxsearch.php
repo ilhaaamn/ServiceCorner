@@ -71,4 +71,55 @@ class Ajaxsearch extends CI_Controller {
         }
     }
 
+    function fetch_part()
+    {
+        $output = '';
+        $query = '';
+        $this->load->model('ajaxsearch_model');
+        if($this->input->post('query'))
+        {
+            $query = $this->input->post('query');
+        }
+        $data = $this->ajaxsearch_model->fetch_data($query);
+        $output .= '
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+            <tr>
+                <th>No.</th>
+                <th>Id</th>
+                <th>Nama</th>
+                <th>Harga</th>
+                <th>Jumlah</th>
+                <th>Detail</th>
+            </tr>
+        ';
+        if($data->num_rows() > 0)
+        {
+            $count = 0;
+            foreach($data->result() as $row)
+            {
+                $count++;
+                $output .= '
+                <tr>
+                    <td>'.$count.'</td>
+                    <td>'.$row->id_part.'</td>
+                    <td>'.$row->nama.'</td>
+                    <td align="right">'."Rp " . number_format($row->harga, 2, ',', '.').'</td>
+                    <td>'.$row->stok.'</td>
+                    <td><a href="'.base_url('').$row->id_part.'"><button class="btn btn-info">Tambah Stok</button></a></td>
+                </tr>
+                ';
+            }
+        }
+        else
+        {
+        $output .= '<tr>
+            <td colspan="5">No Data Found</td>
+            </tr>';
+        }
+        $output .= '</table>';
+        echo $output;
+    }
+
 }
+?>
