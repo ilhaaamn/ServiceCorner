@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,700');
 
 * {
-	margin: 0px; 
-	padding: 0px; 
+	margin: 0px;
+	padding: 0px;
 	box-sizing: border-box;
 }
 
 body {
 	font-family: 'Poppins', sans-serif;
-	background: url('../img/bg2.jpg') no-repeat center center fixed;
+	background-color: ghostwhite;
 }
 
 .main-section {

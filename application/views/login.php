@@ -20,10 +20,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </head>
     <body>
         <div class="modal-dialog text-center">
-            <div class="col-sm-10 main-section">
-                <div class="modal-content">
-                    <div class="col-12">
-                        <span class="login-form-title">Login</span>
+            <div class="col-sm-10 main-section shadow-lg">
+                <div class="modal-content ">
+                    <div class="col-12 ">
+                        <span class="login-form-title">ServiceCorner</span>
+                        <br>
+                        <small>Masuk ke Dashboard</small>
                         <form action="<?php echo base_url('kasir/login')?>" method="post">
                             <div class="form-group">
                                 <span class="lnr lnr-user"></span>

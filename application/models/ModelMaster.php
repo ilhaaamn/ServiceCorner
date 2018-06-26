@@ -35,7 +35,7 @@ class ModelMaster extends CI_Model
     }
 
     public function getMergePelanggan(){
-        $query = $this->db->query('select * from data_transaksi inner join data_pelanggan dp on data_transaksi.id_pelanggan = dp.id_pelanggan;');
+        $query = $this->db->query('select * from data_transaksi inner join data_pelanggan dp on data_transaksi.id_pelanggan = dp.id_pelanggan order by tanggal desc;');
 
         return $query->result();
     }

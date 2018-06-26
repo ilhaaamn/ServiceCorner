@@ -31,7 +31,7 @@ class Kasir extends CI_Controller
             $x['countLay'] = $this->ModelLayanan->countData();
             $x['profit'] = $this->ModelMaster->getProfit();
             $x['partsale'] = $this->ModelSparepart->countSale();
-
+            $x['user_role'] = $this->session->userdata('role');
             $x['master'] = $this->ModelMaster->getMergePelanggan();
             //print_r($x);
             $this->load->view("Dashboard.php", $x);
@@ -66,6 +66,7 @@ class Kasir extends CI_Controller
 
             $this->session->set_userdata('id_kasir', $data['id_kasir']);
             $this->session->set_userdata('username', $data['username']);
+            $this->session->set_userdata('role', $data['role']);
 
             echo $this->session->flashdata('success_msg');
 

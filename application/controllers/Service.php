@@ -17,21 +17,27 @@ class Service extends CI_Controller
 
     public function print_struk($id_master)
     {
-        $this->load->model('ModelMaster');
+        $user_id=$this->session->userdata('id_kasir');
+        $user_role=$this->session->userdata('username');
+        if ($user_id && $user_role) {
+            $this->load->model('ModelMaster');
 
-        $this->session->set_flashdata('id_master', $id_master);
-        //$id_master = '46';
-        $data['pelanggan'] = $this->ModelMaster->getPelanggan($id_master);
-        $data['sparepart'] = $this->ModelMaster->getPart($id_master);
-        $data['layanan'] = $this->ModelMaster->getService($id_master);
-        $data['master'] = $this->ModelMaster->getbyId($id_master);
+            $this->session->set_flashdata('id_master', $id_master);
+            //$id_master = '46';
+            $data['pelanggan'] = $this->ModelMaster->getPelanggan($id_master);
+            $data['sparepart'] = $this->ModelMaster->getPart($id_master);
+            $data['layanan'] = $this->ModelMaster->getService($id_master);
+            $data['master'] = $this->ModelMaster->getbyId($id_master);
 
-        if ($id_master){
-            $this->load->view('struk', $data);
+            if ($id_master) {
+                $this->load->view('struk', $data);
+            } else {
+                redirect(base_url('kasir/transaksi'));
+            }
         }
         else
         {
-            redirect(base_url('kasir/transaksi'));
+            redirect(base_url());
         }
     }
 

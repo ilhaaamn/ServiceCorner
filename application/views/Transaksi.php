@@ -115,7 +115,7 @@
                                     </tr>
                                     <tr>
                                         <td><input type="text" name="item_name[]" id="nama_1" class="form-control item_name" /></td>
-                                        <td><input type="text" name="item_price[]" id="harga_1" class="form-control item_price" readonly/></td>
+                                        <td><input type="text" name="item_price[]" id="harga_1" class="form-control item_price" style="text-align: right" readonly/></td>
                                         <td><input type="text" name="item_quantity[]" id="quantity_1" class="form-control item_quantity" /></td>
                                         <td><button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="lnr lnr-circle-minus"></span></button></td>
                                     </tr>
@@ -136,7 +136,7 @@
                                     </tr>
                                     <tr>
                                         <td><input type="text" name="service_name[]" id="service_1" class="form-control service_name" /></td>
-                                        <td><input type="text" name="service_price[]" id="hargaSer_1" class="form-control service_price" readonly/></td>
+                                        <td><input type="text" name="service_price[]" id="hargaSer_1" class="form-control service_price" readonly style="text-align: right"/></td>
                                         <td><button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="lnr lnr-circle-minus"></span></button></td>
                                     </tr>
                                 </table>

@@ -89,64 +89,68 @@
         <div class="col-xs-8">
             <div id="page-content-wrapper">
                 <h3>Dashboard</h3>
-                <div class="row container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
-                    <div class="col-md-6">
-                        <h4>Grafik Penjulanan</h4>
-                        <canvas id="penjualan" width="1000" height="400"></canvas>
-                    </div>
+                <?php if ($user_role == 'admin') { ?>
+                    <div class="row container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
+                        <div class="col-md-6">
+                            <h4>Grafik Penjulanan</h4>
+                            <canvas id="penjualan" width="1000" height="400"></canvas>
+                        </div>
 
-                    <div class="col-md-6">
-                        <h4>Grafik Service</h4>
-                        <canvas id="layanan" width="1000" height="400"></canvas>
+                        <div class="col-md-6">
+                            <h4>Grafik Service</h4>
+                            <canvas id="layanan" width="1000" height="400"></canvas>
+                        </div>
+
                     </div>
-                    
-                </div>
-                <div class="row container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
-                    <div class="col-sm-3">
-                        <div class="card text-right">
-                        <div class="card-body">
-                            <div class="card w-25">
-                                <span class="lnr lnr-users"></span>
+                    <div class="row container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
+                        <div class="col-sm-3">
+                            <div class="card text-right">
+                                <div class="card-body">
+                                    <div class="card w-25">
+                                        <span class="lnr lnr-users"></span>
+                                    </div>
+                                    <p class="card-title">Total Pelanggan</p>
+                                    <h5 class="card-text"><?php echo $countPel ?></h5>
+                                </div>
                             </div>
-                            <p class="card-title">Total Pelanggan</p>
-                            <h5 class="card-text"><?php echo $countPel ?></h5>
                         </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card text-right">
-                        <div class="card-body">
-                            <div class="card w-25">
-                                <span class="lnr lnr-tag"></span>
+                        <div class="col-sm-3">
+                            <div class="card text-right">
+                                <div class="card-body">
+                                    <div class="card w-25">
+                                        <span class="lnr lnr-tag"></span>
+                                    </div>
+                                    <p class="card-title"></i>Total provit</p>
+                                    <h5 class="card-text"><?php echo "Rp " . number_format($profit->profit, 2, ',', '.') ?></h5>
+                                </div>
                             </div>
-                            <p class="card-title"></i>Total provit</p>
-                            <h5 class="card-text"><?php echo "Rp ".number_format($profit->profit,2,',','.')?></h5>
                         </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card text-right">
-                        <div class="card-body">
-                            <div class="card w-25">
-                                <span class="lnr lnr-cart"></span>
+                        <div class="col-sm-3">
+                            <div class="card text-right">
+                                <div class="card-body">
+                                    <div class="card w-25">
+                                        <span class="lnr lnr-cart"></span>
+                                    </div>
+                                    <p class="card-title">Total Part Terjual</p>
+                                    <h5 class="card-text"><?php echo $partsale->total ?></h5>
+                                </div>
                             </div>
-                            <p class="card-title">Total Part Terjual</p>
-                            <h5 class="card-text"><?php echo $partsale->total?></h5>
                         </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card text-right">
-                        <div class="card-body">
-                            <div class="card w-25">
-                                <span class="lnr lnr-cog"></span>
+                        <div class="col-sm-3">
+                            <div class="card text-right">
+                                <div class="card-body">
+                                    <div class="card w-25">
+                                        <span class="lnr lnr-cog"></span>
+                                    </div>
+                                    <p class="card-title">Total Pelayanan Service</p>
+                                    <h5 class="card-text"><?php echo $countLay ?></h5>
+                                </div>
                             </div>
-                            <p class="card-title">Total Pelayanan Service</p>
-                            <h5 class="card-text"><?php echo $countLay?></h5>
-                        </div>
                         </div>
                     </div>
-                </div>
+                    <?php
+                }
+                ?>
                 <div class="container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
                     <h4>Tabel Transaksi</h4>
                     <div class="table-wrapper-2">
