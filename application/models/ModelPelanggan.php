@@ -13,6 +13,11 @@ class ModelPelanggan extends CI_Model
         return $query->result();
     }
 
+    public function countData(){
+        $query = $this->db->get('data_pelanggan');
+        return $query->num_rows();
+    }
+
     public function getbyId($data){
         $query = $this->db->get_where('data_pelanggan', array('id_kasir' => $data));
         return $query->row();

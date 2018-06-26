@@ -18,6 +18,11 @@ class ModelLayanan extends CI_Model
         return $query->result();
     }
 
+    public function countData(){
+        $query = $this->db->get('data_detail_layanan');
+        return $query->num_rows();
+    }
+
     public function getbyName($data){
         $query = $this->db->get_where('data_layanan', array('nama' => $data));
         return $query->first_row();

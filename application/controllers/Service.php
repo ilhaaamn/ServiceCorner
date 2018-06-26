@@ -19,8 +19,10 @@ class Service extends CI_Controller
     {
         $this->load->model('ModelMaster');
 
-        //$id_master = $this->session->flashdata('id_master');
-        $id_master = '46';
+        $id_master = $this->session->flashdata('id_master');
+
+        $this->session->set_flashdata('id_master', $id_master);
+        //$id_master = '46';
         $data['pelanggan'] = $this->ModelMaster->getPelanggan($id_master);
         $data['sparepart'] = $this->ModelMaster->getPart($id_master);
         $data['layanan'] = $this->ModelMaster->getService($id_master);
@@ -93,6 +95,7 @@ class Service extends CI_Controller
                 'total_biaya'=> $item_price[$index]*$item_quantity[$index]
             );
             $this->ModelDetailSparepart->insertDetail($data);
+            $this->ModelSparepart->update($data);
         }
 
         foreach($service_name as $index => $item){

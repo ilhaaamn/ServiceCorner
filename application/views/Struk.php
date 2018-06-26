@@ -60,35 +60,34 @@
         <div class="col-xs-8">
             <div id="page-content-wrapper">
                 <div class="container-fluid">
-                    <form action="<?php echo base_url('service/insertData')?>" method="post">
                         <h4>Detail transaksi</h4>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Nama Pelanggan</label>
-                                    <input type="text" name="namaPel" class="form-control" readonly>
+                                    <input type="text" name="namaPel" class="form-control" value="<?php echo $pelanggan->nama?>" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Telp/HP</label>
-                                    <input type="text" name="telpPel" class="form-control" readonly>
+                                    <input type="text" name="telpPel" class="form-control" value="<?php echo $pelanggan->no_telp?>" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Nomor Polisi</label>
-                                    <input type="text" name="nopol" class="form-control" readonly>
+                                    <input type="text" name="nopol" class="form-control" value="<?php echo $pelanggan->nopol_kendaraan?>" readonly>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Merk Motor</label>
-                                    <input type="text" name="merk_kendaraan" class="form-control" readonly>
+                                    <input type="text" name="merk_kendaraan" class="form-control" value="<?php echo $pelanggan->merk_kendaraan?>" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Tipe motor</label>
-                                    <input type="text" name="tipe_kendaraan" class="form-control" readonly>
+                                    <input type="text" name="tipe_kendaraan" class="form-control" value="<?php echo $pelanggan->tipe_kendaraan?>" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Tahun</label>
-                                    <input type="text" name="tahun_kendaraan" class="form-control" readonly>
+                                    <input type="text" name="tahun_kendaraan" class="form-control" value="<?php echo $pelanggan->tahun_kendaraan?>" readonly>
                                 </div>
                             </div>
                         </div>
@@ -103,12 +102,20 @@
                                         <th>Nama Part</th>
                                         <th>Jumlah</th>
                                         <th>Harga</th>
+                                        <th>Total Harga</th>
                                     </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+                                    <?php foreach ($sparepart as $item) { ?>
+                                        <tr>
+
+                                            <td><?php echo $item->nama?></td>
+                                            <td><?php echo $item->jumlah?></td>
+                                            <td><?php echo $item->harga?></td>
+                                            <td><?php echo $item->total_biaya?></td>
+
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
                                 </table>
                             </div>
                             <br>
@@ -123,52 +130,36 @@
                                         <th>Paket Service</th>
                                         <th>Harga</th>
                                     </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+                                    <?php foreach ($layanan as $item) { ?>
+                                        <tr>
+
+                                            <td><?php echo $item->nama?></td>
+                                            <td><?php echo $item->harga?></td>
+
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
                                 </table>
 
                             </div>
                         </div>
                         <br>
-                        <div align="right">
-                          <label for="">Total Rp.</label>
-                          <input type="text" id="total" name="total" readonly>
+                        <div class="row justify-content-end">
+                            <label for="">Total : </label>
+                            <div align="right" class="ml-3 mr-3">
+                                <input type="text" name="item" class="form-control" value="<?php echo "Rp ".number_format( $master->total_tagihan,2,',','.')?>" readonly>
+                            </div>
                         </div>
                         <br>
                         <div align="right">
-                            <input type="submit" name="submit" class="btn btn-danger" value="Batal" />
-                            <input type="submit" name="submit" class="btn btn-info" value="Submit" />
+                            <a href="<?php echo base_url('laporan')?>"><button  name="submit" class="btn btn-danger" value="Print">Batal</button></a>
+                            <a href="<?php echo base_url('laporan')?>" target="_blank"><button  name="submit" class="btn btn-info" value="Print">Print</button></a>
                         </div>
-                    </form>
                 </div>
-                <?php
-                        print_r($pelanggan);
-                        print_r($sparepart);
-                        print_r($layanan);
-                        print_r($master);
-
-                    ?>
                 <!-- /.container-fluid -->
             </div>
         </div>
-
-        <!-- <div class="col-xs-8">
-            <div id="page-content-wrapper">
-                <div class="row container-fluid">
-                    
-                    <?php
-                        print_r($pelanggan);
-                        print_r($sparepart);
-                        print_r($layanan);
-                        print_r($master);
-
-                    ?>
-                </div>
-            </div>
-        </div> -->
-
     </div>
 </div>
 

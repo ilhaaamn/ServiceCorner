@@ -104,7 +104,7 @@
                                 <span class="lnr lnr-users"></span>
                             </div>
                             <p class="card-title">Total Pelanggan</p>
-                            <h5 class="card-text">236</h5>
+                            <h5 class="card-text"><?php echo $countPel ?></h5>
                         </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                         <div class="card text-right">
                         <div class="card-body">
                             <p class="card-title"></i>Total provit</p>
-                            <h5 class="card-text">12000000</h5>
+                            <h5 class="card-text"><?php echo "Rp ".number_format($profit->profit,2,',','.')?></h5>
                         </div>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                         <div class="card text-right">
                         <div class="card-body">
                             <p class="card-title">Total Part Terjual</p>
-                            <h5 class="card-text">98</h5>
+                            <h5 class="card-text"><?php echo $partsale->total?></h5>
                         </div>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
                         <div class="card text-right">
                         <div class="card-body">
                             <p class="card-title">Total Pelayanan Service</p>
-                            <h5 class="card-text">69</h5>
+                            <h5 class="card-text"><?php echo $countLay?></h5>
                         </div>
                         </div>
                     </div>
@@ -187,6 +187,7 @@
                 data: <?php echo json_encode($total);?>
             }]
         },
+
 
         // Configuration options go here
         options: {}

@@ -18,6 +18,12 @@ class ModelSparepart extends CI_Model
         return $query->result();
     }
 
+    public function countSale(){
+        $query = $this->db->query('SELECT sum(jumlah) as total FROM data_detail_sparepart;');
+
+        return $query->row();
+    }
+
     public function getbyName($data){
         $query = $this->db->get_where('data_sparepart', array('nama' => $data));
         return $query->first_row();
@@ -34,6 +40,15 @@ class ModelSparepart extends CI_Model
 
     public function insertSparepart($data){
         $this->db->insert('data_sparepart', $data);
+    }
+
+    public function update($data){
+        $result = $this->getbyId($data['id_part']);
+        $row = $result[0];
+        $row->stok = $row->stok - $data['jumlah'];
+
+        $this->db->where('id_part', $data['id_part']);
+        $this->db->update('data_sparepart', $row);
     }
 
 }

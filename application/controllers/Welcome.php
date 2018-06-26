@@ -26,7 +26,8 @@ class Welcome extends CI_Controller {
     }
 
 	public function index()
-	{ $user_id=$this->session->userdata('id_kasir');
+	{
+	    $user_id=$this->session->userdata('id_kasir');
         $user_role=$this->session->userdata('username');
         if (!$user_id && !$user_role){
             $this->load->view('login');

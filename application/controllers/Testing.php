@@ -13,6 +13,7 @@ class Testing extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('session');
+        $this->load->model('ModelMaster');
     }
 
     public function index()
@@ -31,7 +32,12 @@ class Testing extends CI_Controller
     }
 
     public function struk(){
-        $this->load->view("Struk.php");
+        $id_master = '46';
+        $data['pelanggan'] = $this->ModelMaster->getPelanggan($id_master);
+        $data['sparepart'] = $this->ModelMaster->getPart($id_master);
+        $data['layanan'] = $this->ModelMaster->getService($id_master);
+        $data['master'] = $this->ModelMaster->getbyId($id_master);
+        $this->load->view("Struk.php", $data);
     }
 
     public function test()

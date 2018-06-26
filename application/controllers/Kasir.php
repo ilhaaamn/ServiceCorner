@@ -14,6 +14,10 @@ class Kasir extends CI_Controller
         $this->load->helper('url');
         $this->load->library('session');
         $this->load->model('m_grafik');
+        $this->load->model('ModelPelanggan');
+        $this->load->model('ModelLayanan');
+        $this->load->model('ModelSparepart');
+        $this->load->model('ModelMaster');
     }
 
     public function index()
@@ -23,6 +27,11 @@ class Kasir extends CI_Controller
         if ($user_id && $user_role){
             $x['data']=$this->m_grafik->get_data_stok();
             $x['layanan']=$this->m_grafik->get_detail_layanan();
+            $x['countPel'] = $this->ModelPelanggan->countData();
+            $x['countLay'] = $this->ModelLayanan->countData();
+            $x['profit'] = $this->ModelMaster->getProfit();
+            $x['partsale'] = $this->ModelSparepart->countSale();
+
             //print_r($x);
             $this->load->view("Dashboard.php", $x);
         }
