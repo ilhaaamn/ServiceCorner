@@ -40,14 +40,17 @@
             <div class="col-xs-12" id="sidebar-wrapper">
                 <div class="sidebar">
                     <ul class="sidebar-nav">
-                        <li>
+                        <li class="active">
                             <a href="<?php echo base_url()?>"><span class="lnr lnr-home"></span>Dashboard</a>
                         </li>
-                        <li class="active">
-                            <a href="<?php echo base_url()?>"><span class="lnr lnr-database"></span>Tambah Stok</a>
+                        <li>
+                            <a href="<?php echo base_url('kasir/transaksi')?>"><span class="lnr lnr-cart"></span>Penjualan</a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url()?>"><span class="lnr lnr-exit"></span>Logout</a>
+                            <a href="<?php echo base_url('partstok')?>"><span class="lnr lnr-database"></span>Stok</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url('kasir/logout')?>"><span class="lnr lnr-exit"></span>Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -58,22 +61,40 @@
             <div id="page-content-wrapper">
                 <div class="container-fluid">
                     <h4>Data Stok Sparepart</h4>
-                    <table class="table table-bordered">
+                    <div class="form-group">
+                        <div class="input-group">
+                        <span class="input-group-addon">Search</span>
+                        <input type="text" name="search_part" id="search_part" placeholder="Search by Customer Details" class="form-control" />
+                        </div>
+                    </div>
+                    <br>
+                    <div id="result"></div>
+                    <!-- <table class="table table-bordered">
                         <thead>
                             <th style="width: 5%">No.</th>
                             <th style="width: 15%">Id Sparepart</th>
                             <th>Nama</th>
                             <th style="width: 25%">Harga</th>
                             <th style="width: 15%">Jumlah</th>
+                            <th>Detail</th>
                         </thead>
-                        <tbody>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tbody>
-                    </table>
+                        <?php
+                            $count = 0;
+                            foreach ($data as $item){
+                                $count++;
+                                ?>
+                                <tr>
+                                    <td><?php echo $count?></td>
+                                    <td><?php echo $item->id_part?></td>
+                                    <td><?php echo $item->nama?></td>
+                                    <td><?php echo $item->harga?></td>
+                                    <td><?php echo $item->stok?></td>
+                                    <td><a href="<?php echo base_url('').$item->id_part?>"><button class="btn btn-info">Tambah</button></a></td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                    </table> -->
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -89,6 +110,37 @@
 <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
 <script src="http://code.jquery.com/jquery-migrate-3.0.0.js" ></script>
+
+<script>
+$(document).ready(function(){
+
+ load_data();
+
+ function load_data(query)
+ {
+  $.ajax({
+   url:"<?php echo base_url(); ?>ajaxsearch/fetch",
+   method:"POST",
+   data:{query:query},
+   success:function(data){
+    $('#result').html(data);
+   }
+  })
+ }
+
+ $('#search_part').keyup(function(){
+  var search = $(this).val();
+  if(search != '')
+  {
+   load_data(search);
+  }
+  else
+  {
+   load_data();
+  }
+ });
+});
+</script>
 
 </body>
 </html>

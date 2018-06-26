@@ -23,7 +23,7 @@ class PartStok extends CI_Controller
 
         $data['data'] = $this->ModelSparepart->getAll();
         if ($user_id && $user_role){
-            $this->load->view('stok', $data);
+            $this->load->view('datasparepart', $data);
         }
     }
 

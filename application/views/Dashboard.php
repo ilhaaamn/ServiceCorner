@@ -79,7 +79,7 @@
                             <a href="<?php echo base_url('kasir/transaksi')?>"><span class="lnr lnr-cart"></span>Penjualan</a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url()?>"><span class="lnr lnr-database"></span>Stok</a>
+                            <a href="<?php echo base_url('partstok')?>"><span class="lnr lnr-database"></span>Stok</a>
                         </li>
                         <li>
                             <a href="<?php echo base_url('kasir/logout')?>"><span class="lnr lnr-exit"></span>Logout</a>
