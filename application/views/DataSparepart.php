@@ -63,8 +63,7 @@
                     <h4>Data Stok Sparepart</h4>
                     <div class="form-group">
                         <div class="input-group">
-                        <span class="input-group-addon">Search</span>
-                        <input type="text" name="search_part" id="search_part" placeholder="Search by Customer Details" class="form-control" />
+                        <input type="text" name="search_part" id="search_part" placeholder="Cari nama part" class="form-control" />
                         </div>
                     </div>
                     <br>
