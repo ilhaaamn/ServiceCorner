@@ -135,7 +135,7 @@
                 </div>
                 <div class="row container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
                     <h4>Tabel Transaksi</h4>
-                    <table class="table table-responsive table-bordered tr_input" id="" style="background-color: white">
+                    <table class="table table-bordered table-light" id="">
                         <tr>
                             <th style="width: 5%">No.</th>
                             <th>Transaksi</th>
