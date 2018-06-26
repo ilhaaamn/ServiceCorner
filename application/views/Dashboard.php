@@ -156,7 +156,7 @@
                 ?>
                 <div class="container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
                     <h4>Tabel Transaksi</h4>
-                    <div class="table-wrapper-2">
+                    <div class="<?php if ($user_role == 'admin') echo "table-wrapper-2"?>">
                         <table class="table table-bordered table-light" id="">
                             <tr>
                                 <th style="width: 5%">No.</th>
