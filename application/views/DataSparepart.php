@@ -61,6 +61,27 @@
             <div id="page-content-wrapper">
                 <div class="container-fluid">
                     <h4>Data Stok Sparepart</h4>
+                    <form action="<?php echo base_url()?>" method="post">
+                        <h5>Tambah Sparepart</h5>
+                        <div class="row">
+                            <div class="form-group col-md-2">
+                                <input type="text" name="id_part" class="form-control" value="" placeholder="id part">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input type="text" name="nama" class="form-control" value="" placeholder="nama">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input type="text" name="harga" class="form-control" value="" placeholder="harga">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <input type="text" name="stok" class="form-control" placeholder="jumlah stok">
+                            </div>
+                            <div class="col-md-2">
+                                <input type="submit" name="submit" class="btn btn-info" value="Tambah" />
+                            </div>
+                        </div>
+                    </form>
+                    <h5>Sparepart</h5>
                     <div class="form-group">
                         <div class="input-group">
                         <input type="text" name="search_part" id="search_part" placeholder="Cari nama part" class="form-control" />
