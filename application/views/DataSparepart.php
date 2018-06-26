@@ -63,8 +63,7 @@
                     <h4>Data Stok Sparepart</h4>
                     <div class="form-group">
                         <div class="input-group">
-                        <span class="input-group-addon">Search</span>
-                        <input type="text" name="search_part" id="search_part" placeholder="Search by Customer Details" class="form-control" />
+                        <input type="text" name="search_part" id="search_part" placeholder="Cari nama part" class="form-control" />
                         </div>
                     </div>
                     <br>
@@ -112,34 +111,34 @@
 <script src="http://code.jquery.com/jquery-migrate-3.0.0.js" ></script>
 
 <script>
-$(document).ready(function(){
+    $(document).ready(function(){
 
- load_data();
+    load_data();
 
- function load_data(query)
- {
-  $.ajax({
-   url:"<?php echo base_url('ajaxsearch/fetch_part'); ?>",
-   method:"POST",
-   data:{query:query},
-   success:function(data){
-    $('#result').html(data);
-   }
-  })
- }
+    function load_data(query)
+    {
+        $.ajax({
+            url:"<?php echo base_url('ajaxsearch/fetch_part'); ?>",
+            method:"POST",
+            data:{query:query},
+            success:function(data){
+                $('#result').html(data);
+        }
+        })
+    }
 
- $('#search_part').keyup(function(){
-  var search = $(this).val();
-  if(search != '')
-  {
-   load_data(search);
-  }
-  else
-  {
-   load_data();
-  }
- });
-});
+    $('#search_part').keyup(function(){
+            var search = $(this).val();
+            if(search != '')
+            {
+                load_data(search);
+            }
+            else
+            {
+                load_data();
+            }
+        });
+    });
 </script>
 
 </body>
