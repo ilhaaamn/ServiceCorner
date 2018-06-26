@@ -150,7 +150,7 @@
                         <div class="row justify-content-end">
                             <label for="">Total : </label>
                             <div align="right" class="ml-3 mr-3">
-                                <input type="text" name="item" class="form-control" value="<?php echo "Rp ".number_format( $master->total_tagihan,2,',','.')?>" readonly>
+                                <input type="text" style="text-align: right;" name="item" class="form-control" value="<?php echo "Rp ".number_format( $master->total_tagihan,2,',','.')?>" readonly>
                             </div>
                         </div>
                         <br>
