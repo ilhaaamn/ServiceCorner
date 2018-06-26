@@ -21,6 +21,16 @@ body {
   padding: 20px;
 }
 
+/* navbar style */
+
+.navbar {
+  background-color: #17a2b8;
+}
+
+.navbar-brand {
+  color: white;
+}
+
 /* sidebar style */
 
 .sidebar-nav {

@@ -23,7 +23,7 @@
 <body>
   <div id="wrapper">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <a class="navbar-brand" href="#">ServiceCorner</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -40,13 +40,13 @@
             <div class="col-xs-12" id="sidebar-wrapper">
                 <div class="sidebar">
                     <ul class="sidebar-nav">
-                        <li class="active">
+                        <li>
                             <a href="<?php echo base_url()?>"><span class="lnr lnr-home"></span>Dashboard</a>
                         </li>
                         <li>
                             <a href="<?php echo base_url('kasir/transaksi')?>"><span class="lnr lnr-cart"></span>Penjualan</a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="<?php echo base_url('partstok')?>"><span class="lnr lnr-database"></span>Stok</a>
                         </li>
                         <li>
