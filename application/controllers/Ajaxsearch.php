@@ -106,7 +106,7 @@ class Ajaxsearch extends CI_Controller {
                     <td>'.$row->nama.'</td>
                     <td align="right">'."Rp " . number_format($row->harga, 2, ',', '.').'</td>
                     <td>'.$row->stok.'</td>
-                    <td><a href="'.base_url('partstok/updatestok/').$row->id_part.'"><button class="btn btn-info">Tambah Stok</button></a></td>
+                    <td><a href="'.base_url('partstok/stok/').$row->id_part.'"><button class="btn btn-info">Tambah Stok</button></a></td>
                 </tr>
                 ';
             }

@@ -60,27 +60,27 @@
         <div class="col-xs-8">
             <div id="page-content-wrapper">
                 <div class="container-fluid">
-                    <form action="<?php echo base_url('service/insertData')?>" method="post">
+                    <form action="<?php echo base_url('partstok/updatestok')?>" method="post">
                         <h4>Tambah Stok</h4>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Id</label>
-                                <input type="text" name="id" class="form-control">
+                                <input type="text" name="id_part" class="form-control" value="<?php echo $data[0]->id_part?>" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="">Nama</label>
-                                <input type="text" name="nama" class="form-control">
+                                <input type="text" name="nama" class="form-control" value="<?php echo $data[0]->nama?>" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="">Harga</label>
-                                <input type="text" name="harga" class="form-control">
+                                <input type="text" name="harga" class="form-control" value="<?php echo $data[0]->harga?>" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="">Jumlah</label>
-                                <input type="text" name="jumlah" class="form-control">
+                                <input type="text" name="stok" class="form-control">
                             </div>
                             <div align="right">
-                              <input type="submit" name="submit" class="btn btn-info" value="Simpan" />
+                              <input type="submit" name="submit" class="btn btn-info" value="Tambah" />
                             </div>
                         </div>
                     </form>

@@ -27,7 +27,7 @@ class PartStok extends CI_Controller
         }
     }
 
-    public function updateStok($id_stok){
+    public function stok($id_stok){
         $user_id=$this->session->userdata('id_kasir');
         $user_role=$this->session->userdata('username');
         if ($user_id && $user_role) {
@@ -41,6 +41,28 @@ class PartStok extends CI_Controller
             } else {
                 redirect(base_url('partstok'));
             }
+        }
+        else
+        {
+            redirect(base_url());
+        }
+    }
+
+    public function updateStok(){
+        $user_id=$this->session->userdata('id_kasir');
+        $user_role=$this->session->userdata('username');
+        if ($user_id && $user_role) {
+            $this->load->model('ModelSparepart');
+
+            $data=array(
+                'id_part'=>$this->input->post('id_part'),
+                'nama'=>$this->input->post('nama'),
+                'harga'=>$this->input->post('harga'),
+                'stok'=> $this->input->post('stok')
+            );
+            $this->ModelSparepart->addStok($data);
+            redirect(base_url('partstok'));
+
         }
         else
         {
