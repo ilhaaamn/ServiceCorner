@@ -145,7 +145,7 @@
                         </div>
                         <br>
                         <div align="left">
-                            <input type="submit" name="submit" class="btn btn-info float-right" value="Selanjutnya" />
+                            <input type="submit" name="submit" class="btn btn-info float-right" value="Selesai" />
                         </div>
                     </form>
                 </div>

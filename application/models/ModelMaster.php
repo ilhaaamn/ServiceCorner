@@ -34,6 +34,12 @@ class ModelMaster extends CI_Model
         return $query->row();
     }
 
+    public function getMergePelanggan(){
+        $query = $this->db->query('select * from data_transaksi inner join data_pelanggan dp on data_transaksi.id_pelanggan = dp.id_pelanggan;');
+
+        return $query->result();
+    }
+
     public function getPelanggan($id){
         $query = $this->db->query("SELECT data_transaksi.id_pelanggan,nama,no_telp,nopol_kendaraan,tanggal,merk_kendaraan,tipe_kendaraan,tahun_kendaraan FROM data_transaksi inner join data_pelanggan dp on data_transaksi.id_pelanggan = dp.id_pelanggan where data_transaksi.id_master = '".$id."';");
 

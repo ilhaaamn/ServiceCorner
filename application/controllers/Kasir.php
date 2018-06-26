@@ -32,8 +32,7 @@ class Kasir extends CI_Controller
             $x['profit'] = $this->ModelMaster->getProfit();
             $x['partsale'] = $this->ModelSparepart->countSale();
 
-            $x['master'] = $this->ModelMaster->getAll();
-
+            $x['master'] = $this->ModelMaster->getMergePelanggan();
             //print_r($x);
             $this->load->view("Dashboard.php", $x);
         }

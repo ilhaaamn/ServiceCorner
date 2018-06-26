@@ -108,8 +108,8 @@
 
                                             <td><?php echo $item->nama?></td>
                                             <td><?php echo $item->jumlah?></td>
-                                            <td><?php echo $item->harga?></td>
-                                            <td><?php echo $item->total_biaya?></td>
+                                            <td STYLE="text-align: right"><?php echo  "Rp ".number_format( $item->harga,2,',','.')?></td>
+                                            <td STYLE="text-align: right"><?php echo  "Rp ".number_format( $item->total_biaya,2,',','.')?></td>
 
                                         </tr>
                                         <?php
@@ -133,7 +133,7 @@
                                         <tr>
 
                                             <td><?php echo $item->nama?></td>
-                                            <td><?php echo $item->harga?></td>
+                                            <td STYLE="text-align: right"><?php echo  "Rp ".number_format( $item->harga,2,',','.')?></td>
 
                                         </tr>
                                         <?php

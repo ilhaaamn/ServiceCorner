@@ -15,11 +15,9 @@ class Service extends CI_Controller
         $this->load->library('session');
     }
 
-    public function print_struk()
+    public function print_struk($id_master)
     {
         $this->load->model('ModelMaster');
-
-        $id_master = $this->session->flashdata('id_master');
 
         $this->session->set_flashdata('id_master', $id_master);
         //$id_master = '46';
@@ -109,7 +107,7 @@ class Service extends CI_Controller
         }
 
         $this->session->set_flashdata('id_master', $id_master);
-        redirect(base_url('service/print_struk'));
+        redirect(base_url('service/print_struk/').$id_master);
 
     }
 

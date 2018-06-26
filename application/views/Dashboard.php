@@ -30,6 +30,12 @@
             font-size: 12px;
             color: #999;
         }
+        .table-wrapper-2 {
+            display: block;
+            max-height: 300px;
+            overflow-y: auto;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
     </style>
 
     <?php
@@ -141,20 +147,38 @@
                         </div>
                     </div>
                 </div>
-                <div class="row container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
+                <div class="container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
                     <h4>Tabel Transaksi</h4>
-                    <table class="table table-bordered table-light" id="">
-                        <tr>
-                            <th style="width: 5%">No.</th>
-                            <th>Transaksi</th>
-                            <th>Detail</th>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </table>
+                    <div class="table-wrapper-2">
+                        <table class="table table-bordered table-light" id="">
+                            <tr>
+                                <th style="width: 5%">No.</th>
+                                <th>Tanggal</th>
+                                <th>Pelanggan</th>
+                                <th>No. Polisi</th>
+                                <th>Telpon</th>
+                                <th>Total</th>
+                                <th style="width: 5%">Detail</th>
+                            </tr>
+                            <?php
+                            $count = 0;
+                            foreach ($master as $item){
+                                $count++;
+                                ?>
+                                <tr>
+                                    <td><?php echo $count?></td>
+                                    <td><?php echo $item->tanggal?></td>
+                                    <td><?php echo $item->nama?></td>
+                                    <td><?php echo $item->nopol_kendaraan?></td>
+                                    <td><?php echo $item->no_telp?></td>
+                                    <td style="text-align: right"><?php echo  "Rp ".number_format( $item->total_tagihan,2,',','.')?></td>
+                                    <td><a href="<?php echo base_url('service/print_struk/').$item->id_master?>"><button class="btn btn-info">Lihat Detail</button></a></td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
