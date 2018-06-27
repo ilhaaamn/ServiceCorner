@@ -83,31 +83,32 @@
                         <h4>Data Pelanggan</h4>
                         <div class="row">
                             <div class="col-md-4">
+                                <input hidden type="text" name="idPel"  id="idPel" class="form-control">
                                 <div class="form-group">
                                     <label for="">Nama</label>
-                                    <input type="text" name="namaPel" class="form-control">
+                                    <input type="text" name="namaPel"  id="namaPel" class="form-control namaPel">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Telp/HP</label>
-                                    <input type="text" name="telpPel" class="form-control">
+                                    <input type="text" name="telpPel" id="telp" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Nomor Polisi</label>
-                                    <input type="text" name="nopol" class="form-control">
+                                    <input type="text" name="nopol" id="nopol" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Merk Motor</label>
-                                    <input type="text" name="merk_kendaraan" class="form-control">
+                                    <input type="text" name="merk_kendaraan" id="merk" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Tipe motor</label>
-                                    <input type="text" name="tipe_kendaraan" class="form-control">
+                                    <input type="text" name="tipe_kendaraan" id="tipe" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Tahun</label>
-                                    <input type="text" name="tahun_kendaraan" class="form-control">
+                                    <input type="text" name="tahun_kendaraan" id="tahun" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -187,7 +188,6 @@
 
             //alert(index);
             $( '#'+id ).autocomplete({
-
                 source: function( request, response ) {
                     $.ajax({
                         url: "<?php echo base_url('ajaxsearch/fetch'); ?>",
@@ -196,12 +196,12 @@
                         data: {
                             search: request.term,request:1
                         },
-                        success: function( data ) {
-                            response( data );
-                            // alert('Successfully called');
-
-                        }
+                        success: response
                     });
+                },
+                focus: function( event, ui ) {
+                    $( "#"+id ).val( ui.item.label );
+                    return false;
                 },
                 select: function (event, ui) {
                     $(this).val(ui.item.label); // display the selected text
@@ -230,7 +230,89 @@
 
                     return false;
                 }
-            });
+            }).data("uiAutocomplete")._renderItem =  function( ul, item )
+            {
+                return $( "<li>" )
+                    .append( "<a>" + "<strong>" + item.label + "</strong>" + "<br>"  + item.desc + "</a>" )
+                    .appendTo( ul );
+            };
+        });
+    });
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $(document).on('keydown', '.namaPel', function() {
+
+            var id = this.id;
+            var splitid = id.split('_');
+            var index = splitid[1];
+
+            //alert(index);
+            $( '#namaPel' ).autocomplete({
+
+                source: function( request, response ) {
+                    $.ajax({
+                        url: "<?php echo base_url('ajaxsearch/fetchPel'); ?>",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            search: request.term,request:1
+                        },
+                        success: function( data ) {
+                            response( data );
+                            // alert('Successfully called');
+                        }
+                    });
+                },
+                focus: function( event, ui ) {
+                    $( "namaPel" ).val( ui.item.label );
+                    return false;
+                },
+                select: function (event, ui) {
+                    $(this).val(ui.item.label); // display the selected text
+                    var userid = ui.item.value; // selected id to input
+                    console.log(userid);
+                    // AJAX
+                    $.ajax({
+                        url: "<?php echo base_url('ajaxsearch/fetchPel'); ?>",
+                        type: 'post',
+                        data: {userid:userid,request:2},
+                        dataType: 'json',
+                        success:function(response){
+                            var len = response.length;
+                            console.log(response);
+                            if(len > 0){
+                                var id = response[0]['id_pelanggan'];
+                                var name = response[0]['nama'];
+                                var telp = response[0]['no_telp'];
+                                var nopol_kendaraan = response[0]['nopol_kendaraan'];
+                                var tahun_kendaraan = response[0]['tahun_kendaraan'];
+                                var merk_kendaraan = response[0]['merk_kendaraan'];
+                                var tipe_kendaraan = response[0]['tipe_kendaraan'];
+
+                                document.getElementById('idPel').value = id;
+                                document.getElementById('namaPel').value = name;
+                                document.getElementById('telp').value = telp;
+                                document.getElementById('nopol').value = nopol_kendaraan;
+                                document.getElementById('tahun').value = tahun_kendaraan;
+                                document.getElementById('merk').value = merk_kendaraan;
+                                document.getElementById('tipe').value = tipe_kendaraan;
+
+                            }
+                        }
+                    });
+
+                    return false;
+                }
+            }).data("uiAutocomplete")._renderItem =  function( ul, item )
+            {
+                return $( "<li>" )
+                    .append( "<a>" + "<strong>" + item.label + "</strong>" + "<br> No. telp. "  + item.notelp + "<br>"  + item.merk + "<br>" + item.tipe + "<br>No. pol. " + item.nopol + "</a>" )
+                    .appendTo( ul );
+            };
         });
 
     });
@@ -265,6 +347,10 @@
                         }
                     });
                 },
+                focus: function( event, ui ) {
+                    $( "#"+id ).val( ui.item.label );
+                    return false;
+                },
                 select: function (event, ui) {
                     $(this).val(ui.item.label); // display the selected text
                     var userid = ui.item.value; // selected id to input
@@ -292,7 +378,12 @@
 
                     return false;
                 }
-            });
+            }).data("uiAutocomplete")._renderItem =  function( ul, item )
+            {
+                return $( "<li>" )
+                    .append( "<a>" + "<strong>" + item.label + "</strong>" + "<br>"  + item.desc + "</a>" )
+                    .appendTo( ul );
+            };
         });
 
     });

@@ -58,8 +58,12 @@ class Service extends CI_Controller
             'tipe_kendaraan'=>$this->input->post('tipe_kendaraan')
         );
 
-        $id_pelanggan = $this->ModelPelanggan->insertPelanggan($pelanggan);
-
+        if ($this->input->post('idPel') == "") {
+            $id_pelanggan = $this->ModelPelanggan->insertPelanggan($pelanggan);
+        }
+        else{
+            $id_pelanggan = $this->input->post('idPel');
+        }
         $item_name = $this->input->post("item_name");
         $item_price = $this->input->post("item_price");
         $item_quantity = $this->input->post("item_quantity");
@@ -88,27 +92,31 @@ class Service extends CI_Controller
 
         $id_master = $this->ModelMaster->insertTransaksi($data);
 
-        foreach($item_name as $index => $item){
-            $part = $this->ModelSparepart->getbyName($item);
-            var_dump($item);
-            $data=array(
-                'id_master'=>$id_master,
-                'id_part'=>$part->id_part,
-                'jumlah'=>$item_quantity[$index],
-                'total_biaya'=> $item_price[$index]*$item_quantity[$index]
-            );
-            $this->ModelDetailSparepart->insertDetail($data);
-            $this->ModelSparepart->update($data);
+        if (!empty($item_name) && $item_name[0] != "") {
+            foreach ($item_name as $index => $item) {
+                $part = $this->ModelSparepart->getbyName($item);
+                var_dump($item);
+                $data = array(
+                    'id_master' => $id_master,
+                    'id_part' => $part->id_part,
+                    'jumlah' => $item_quantity[$index],
+                    'total_biaya' => $item_price[$index] * $item_quantity[$index]
+                );
+                $this->ModelDetailSparepart->insertDetail($data);
+                $this->ModelSparepart->update($data);
+            }
         }
 
-        foreach($service_name as $index => $item){
-            $part = $this->ModelLayanan->getbyName($item);
-            $data=array(
-                'id_master'=>$id_master,
-                'id_layanan'=>$part->id_layanan,
-                'total_biaya'=> $service_price[$index]
-            );
-            $this->ModelDetailLayanan->insertDetail($data);
+        if (!empty($service_name) && $service_name[0] != ""){
+            foreach($service_name as $index => $item){
+                $part = $this->ModelLayanan->getbyName($item);
+                $data=array(
+                    'id_master'=>$id_master,
+                    'id_layanan'=>$part->id_layanan,
+                    'total_biaya'=> $service_price[$index]
+                );
+                $this->ModelDetailLayanan->insertDetail($data);
+            }
         }
 
         $this->session->set_flashdata('id_master', $id_master);

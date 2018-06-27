@@ -19,8 +19,13 @@ class ModelPelanggan extends CI_Model
     }
 
     public function getbyId($data){
-        $query = $this->db->get_where('data_pelanggan', array('id_kasir' => $data));
+        $query = $this->db->get_where('data_pelanggan', array('id_pelanggan' => $data));
         return $query->row();
+    }
+
+    public function getbyIdAjax($data){
+        $query = $this->db->get_where('data_pelanggan', array('id_pelanggan' => $data));
+        return $query->result();
     }
 
     public function getbyNopol($data){
@@ -32,5 +37,14 @@ class ModelPelanggan extends CI_Model
         $this->db->insert('data_pelanggan', $data);
         $insert_id = $this->db->insert_id();
         return  $insert_id;
+    }
+
+    public function getLike($data){
+        $this->db->select('*');
+        $this->db->from('data_pelanggan');
+        $this->db->like('nama', $data);
+        $query = $this->db->get();
+
+        return $query->result();
     }
 }

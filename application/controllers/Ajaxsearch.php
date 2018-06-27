@@ -21,10 +21,10 @@ class Ajaxsearch extends CI_Controller {
             $search = $_POST['search'];
 
 //            $query = "SELECT * FROM data_sparepart WHERE nama like'%".$search."%'";
-            $result = $this->ModelSparepart->getLike($search);
-
+//            $result = $this->ModelSparepart->getLike($search);
+            $result = $this->ModelSparepart->getAll();
             foreach($result as $row){
-                $response[] = array("value"=>$row->id_part,"label"=>$row->nama);
+                $response[] = array("value"=>$row->id_part,"label"=>$row->nama, "desc"=>$row->harga);
             }
 
             // encoding array to json format
@@ -58,7 +58,7 @@ class Ajaxsearch extends CI_Controller {
             $result = $this->ModelLayanan->getLike($search);
 
             foreach($result as $row){
-                $response[] = array("value"=>$row->id_layanan,"label"=>$row->nama);
+                $response[] = array("value"=>$row->id_layanan,"label"=>$row->nama, "desc"=>$row->harga);
             }
 
             // encoding array to json format
@@ -71,6 +71,40 @@ class Ajaxsearch extends CI_Controller {
             $id_layanan = $_POST['userid'];
 
             $result = $this->ModelLayanan->getbyId($id_layanan);
+
+            // encoding array to json format
+            echo json_encode($result);
+            exit;
+        }
+    }
+
+    function fetchPel()
+    {
+        $this->load->model('ModelPelanggan');
+
+        $request = $_POST['request'];   // request
+
+        // Get username list
+        if($request == 1){
+            $search = $_POST['search'];
+
+//            $query = "SELECT * FROM data_sparepart WHERE nama like'%".$search."%'";
+            $result = $this->ModelPelanggan->getLike($search);
+
+            foreach($result as $row){
+                $response[] = array("value"=>$row->id_pelanggan,"label"=>$row->nama, "notelp"=>$row->no_telp, "nopol"=>$row->nopol_kendaraan,  "merk"=>$row->merk_kendaraan,  "tipe"=>$row->tipe_kendaraan,);
+            }
+
+            // encoding array to json format
+            echo json_encode($response);
+            exit;
+        }
+
+        // Get details
+        if($request == 2){
+            $id_layanan = $_POST['userid'];
+
+            $result = $this->ModelPelanggan->getbyIdAjax($id_layanan);
 
             // encoding array to json format
             echo json_encode($result);
