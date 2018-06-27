@@ -22,6 +22,7 @@ class PartStok extends CI_Controller
         $user_role=$this->session->userdata('username');
 
         $data['data'] = $this->ModelSparepart->getAll();
+        $data['user_role'] = $this->session->userdata('role');
         if ($user_id && $user_role){
             $this->load->view('datasparepart', $data);
         }
@@ -61,6 +62,30 @@ class PartStok extends CI_Controller
                 'stok'=> $this->input->post('stok')
             );
             $this->ModelSparepart->addStok($data);
+            redirect(base_url('partstok'));
+
+        }
+        else
+        {
+            redirect(base_url());
+        }
+    }
+
+    public function addSparepart(){
+        $user_id=$this->session->userdata('id_kasir');
+        $user_role=$this->session->userdata('username');
+        if ($user_id && $user_role) {
+            $this->load->model('ModelSparepart');
+
+            $data=array(
+                'id_part'=>$this->input->post('id_part'),
+                'nama'=>$this->input->post('nama'),
+                'harga'=>$this->input->post('harga'),
+                'stok'=> $this->input->post('stok')
+            );
+            $this->ModelSparepart->insertSparepart($data);
+
+            print_r($data);
             redirect(base_url('partstok'));
 
         }

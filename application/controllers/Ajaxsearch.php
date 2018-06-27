@@ -9,7 +9,7 @@ class Ajaxsearch extends CI_Controller {
         $this->load->helper('url');
         $this->load->library('session');
     }
-    
+
     function fetch()
     {
         $this->load->model('ModelSparepart');
