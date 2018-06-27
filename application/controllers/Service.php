@@ -21,14 +21,13 @@ class Service extends CI_Controller
         $user_role=$this->session->userdata('username');
         if ($user_id && $user_role) {
             $this->load->model('ModelMaster');
-
             $this->session->set_flashdata('id_master', $id_master);
             //$id_master = '46';
             $data['pelanggan'] = $this->ModelMaster->getPelanggan($id_master);
             $data['sparepart'] = $this->ModelMaster->getPart($id_master);
             $data['layanan'] = $this->ModelMaster->getService($id_master);
             $data['master'] = $this->ModelMaster->getbyId($id_master);
-
+            $data['user_role'] = $this->session->userdata('role');
             if ($id_master) {
                 $this->load->view('struk', $data);
             } else {

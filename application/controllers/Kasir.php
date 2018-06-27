@@ -24,6 +24,7 @@ class Kasir extends CI_Controller
     {
         $user_id=$this->session->userdata('id_kasir');
         $user_role=$this->session->userdata('username');
+        $role = $this->session->userdata('role');
         if ($user_id && $user_role){
             $x['data']=$this->m_grafik->get_data_stok();
             $x['layanan']=$this->m_grafik->get_detail_layanan();
@@ -34,7 +35,13 @@ class Kasir extends CI_Controller
             $x['user_role'] = $this->session->userdata('role');
             $x['master'] = $this->ModelMaster->getMergePelanggan();
             //print_r($x);
-            $this->load->view("Dashboard.php", $x);
+            if ($role == 'admin'){
+                $this->load->view("Dashboard.php", $x);
+            }
+            else {
+                $this->load->view("Transaksi.php", $x);
+            }
+
         }
         else{
             redirect(base_url());
@@ -42,10 +49,18 @@ class Kasir extends CI_Controller
     }
 
     function transaksi(){
+        $x['data']=$this->m_grafik->get_data_stok();
+        $x['layanan']=$this->m_grafik->get_detail_layanan();
+        $x['countPel'] = $this->ModelPelanggan->countData();
+        $x['countLay'] = $this->ModelLayanan->countData();
+        $x['profit'] = $this->ModelMaster->getProfit();
+        $x['partsale'] = $this->ModelSparepart->countSale();
+        $x['user_role'] = $this->session->userdata('role');
+        $x['master'] = $this->ModelMaster->getMergePelanggan();
         $user_id=$this->session->userdata('id_kasir');
         $user_role=$this->session->userdata('username');
         if ($user_id && $user_role){
-            $this->load->view("Transaksi.php");
+            $this->load->view("Transaksi.php", $x);
         }
         else{
             redirect(base_url());

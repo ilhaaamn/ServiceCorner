@@ -42,15 +42,23 @@
             <div class="col-xs-12" id="sidebar-wrapper">
                 <div class="sidebar">
                     <ul class="sidebar-nav">
-                        <li>
-                            <a href="<?php echo base_url()?>"><span class="lnr lnr-home"></span>Dashboard</a>
-                        </li>
-                        <li>
+                        <?php if ($user_role == 'admin') { ?>
+                            <li>
+                                <a href="<?php echo base_url() ?>"><span class="lnr lnr-home"></span>Dashboard</a>
+                            </li>
+                            <?php
+                        }
+                        ?>
+                        <li class="active">
                             <a href="<?php echo base_url('kasir/transaksi')?>"><span class="lnr lnr-cart"></span>Penjualan</a>
                         </li>
-                        <li>
-                            <a href="<?php echo base_url('partstok')?>"><span class="lnr lnr-database"></span>Stok</a>
-                        </li>
+                        <?php if ($user_role == 'admin') { ?>
+                            <li>
+                                <a href="<?php echo base_url('partstok')?>"><span class="lnr lnr-database"></span>Stok</a>
+                            </li>
+                            <?php
+                        }
+                        ?>
                         <li>
                             <a href="<?php echo base_url('kasir/logout')?>"><span class="lnr lnr-exit"></span>Logout</a>
                         </li>
@@ -111,8 +119,8 @@
 
                                             <td><?php echo $item->nama?></td>
                                             <td><?php echo $item->jumlah?></td>
-                                            <td STYLE="text-align: right"><?php echo  "Rp ".number_format( $item->harga,2,',','.')?></td>
-                                            <td STYLE="text-align: right"><?php echo  "Rp ".number_format( $item->total_biaya,2,',','.')?></td>
+                                            <td STYLE="text-align: right"><?php echo  "Rp".number_format( $item->harga,2,',','.')?></td>
+                                            <td STYLE="text-align: right"><?php echo  "Rp".number_format( $item->total_biaya,2,',','.')?></td>
 
                                         </tr>
                                         <?php
@@ -136,7 +144,7 @@
                                         <tr>
 
                                             <td><?php echo $item->nama?></td>
-                                            <td STYLE="text-align: right"><?php echo  "Rp ".number_format( $item->harga,2,',','.')?></td>
+                                            <td STYLE="text-align: right"><?php echo  "Rp".number_format( $item->harga,2,',','.')?></td>
 
                                         </tr>
                                         <?php
@@ -150,7 +158,7 @@
                         <div class="row justify-content-end">
                             <label for="">Total : </label>
                             <div align="right" class="ml-3 mr-3">
-                                <input type="text" style="text-align: right;" name="item" class="form-control" value="<?php echo "Rp ".number_format( $master->total_tagihan,2,',','.')?>" readonly>
+                                <input type="text" style="text-align: right;" name="item" class="form-control" value="<?php echo "Rp".number_format( $master->total_tagihan,2,',','.')?>" readonly>
                             </div>
                         </div>
                         <br>

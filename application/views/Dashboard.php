@@ -123,8 +123,8 @@
                                     <div class="card w-25">
                                         <span class="lnr lnr-tag"></span>
                                     </div>
-                                    <p class="card-title"></i>Total provit</p>
-                                    <h5 class="card-text"><?php echo "Rp " . number_format($profit->profit, 2, ',', '.') ?></h5>
+                                    <p class="card-title"></i>Total Omset</p>
+                                    <h5 class="card-text"><?php echo "Rp" . number_format($profit->profit, 2, ',', '.') ?></h5>
                                 </div>
                             </div>
                         </div>
@@ -157,7 +157,7 @@
                 <div class="container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
                     <h4>Tabel Transaksi</h4>
                     <div class="mt-3 mb-3">
-                        <input type="text" class="form-control" id="cari" onkeyup="myFunction()" placeholder="Cari tanggal">
+                        <input type="date" class="form-control" id="cari" onchange="myFunction()" placeholder="Cari tanggal">
                     </div>
                     <div class="<?php if ($user_role == 'admin') echo "table-wrapper-2"?>">
                         <table class="table table-bordered table-light" id="tabel-transaksi">
@@ -181,7 +181,7 @@
                                     <td><?php echo $item->nama?></td>
                                     <td><?php echo $item->nopol_kendaraan?></td>
                                     <td><?php echo $item->no_telp?></td>
-                                    <td style="text-align: right"><?php echo  "Rp ".number_format( $item->total_tagihan,2,',','.')?></td>
+                                    <td style="text-align: right"><?php echo  "Rp".number_format( $item->total_tagihan,2,',','.')?></td>
                                     <td><a href="<?php echo base_url('service/print_struk/').$item->id_master?>"><button class="btn btn-info">Lihat Detail</button></a></td>
                                 </tr>
                                 <?php
