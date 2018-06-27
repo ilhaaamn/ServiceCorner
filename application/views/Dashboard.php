@@ -156,16 +156,11 @@
                 ?>
                 <div class="container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
                     <h4>Tabel Transaksi</h4>
-<<<<<<< HEAD
                     <div class="mt-3 mb-3">
                         <input type="text" class="form-control" id="cari" onkeyup="myFunction()" placeholder="Cari tanggal">
                     </div>
-                    <div class="table-wrapper-2">
-                        <table class="table table-bordered table-light" id="tabel-transaksi">
-=======
                     <div class="<?php if ($user_role == 'admin') echo "table-wrapper-2"?>">
-                        <table class="table table-bordered table-light" id="">
->>>>>>> 99d863f91b690a4ae3afeb8292825df1c197b973
+                        <table class="table table-bordered table-light" id="tabel-transaksi">
                             <tr>
                                 <th style="width: 5%">No.</th>
                                 <th>Tanggal</th>
