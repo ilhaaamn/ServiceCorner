@@ -63,6 +63,11 @@ class Service extends CI_Controller
         }
         else{
             $id_pelanggan = $this->input->post('idPel');
+            $temp = $this->ModelPelanggan->getbyId($id_pelanggan);
+            if ($temp->nama != $pelanggan['nama'] || $temp->nopol_kendaraan != $pelanggan['nopol_kendaraan'] || $temp->tahun_kendaraan != $pelanggan['tahun_kendaraan']
+                || $temp->merk_kendaraan != $pelanggan['merk_kendaraan'] || $temp->tipe_kendaraan != $pelanggan['tipe_kendaraan'] || $temp->no_telp != $pelanggan['no_telp']){
+                $id_pelanggan = $this->ModelPelanggan->insertPelanggan($pelanggan);
+            }
         }
         $item_name = $this->input->post("item_name");
         $item_price = $this->input->post("item_price");
