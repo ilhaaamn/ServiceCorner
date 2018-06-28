@@ -78,9 +78,9 @@
 
         <div class="col-xs-8">
             <div id="page-content-wrapper">
-                <div class="container-fluid">
+                <div class="container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
+                    <h4>Data Pelanggan</h4>
                     <form action="<?php echo base_url('service/insertData')?>" method="post">
-                        <h4>Data Pelanggan</h4>
                         <div class="row">
                             <div class="col-md-4">
                                 <input hidden type="text" name="idPel"  id="idPel" class="form-control">
@@ -118,7 +118,7 @@
                         <div id="spare-parts">
                             <div class="table-repsonsive">
                                 <span id="error"></span>
-                                <table class="table table-bordered tr_input" id="item_table">
+                                <table class="table table-bordered tr_input" id="item_table" style="background-color: white">
                                     <tr>
                                         <th>Nama Part</th>
                                         <th>Harga</th>
@@ -140,7 +140,7 @@
                         <div id="service">
                             <div class="table-repsonsive">
                                 <span id="error"></span>
-                                <table class="table table-bordered sr_input" id="service_table">
+                                <table class="table table-bordered sr_input" id="service_table" style="background-color: white">
                                     <tr>
                                         <th>Paket Service</th>
                                         <th>Harga</th>
@@ -156,8 +156,8 @@
                             </div>
                         </div>
                         <br>
-                        <div align="left">
-                            <input type="submit" name="submit" class="btn btn-info float-right" value="Selesai" />
+                        <div align="right">
+                            <input type="submit" name="submit" class="btn btn-info" value="Selesai" />
                         </div>
                     </form>
                 </div>

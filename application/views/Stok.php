@@ -59,9 +59,9 @@
 
         <div class="col-xs-8">
             <div id="page-content-wrapper">
-                <div class="container-fluid">
+                <h4>Tambah Stok</h4>
+                <div class="row container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
                     <form action="<?php echo base_url('partstok/updatestok')?>" method="post">
-                        <h4>Tambah Stok</h4>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Id</label>

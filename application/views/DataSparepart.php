@@ -59,8 +59,8 @@
 
         <div class="col-xs-8">
             <div id="page-content-wrapper">
-                <div class="container-fluid">
-                    <h4>Data Stok Sparepart</h4>
+                <h4>Data Stok Sparepart</h4>
+                <div class="container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
                     <?php
                     if ($user_role == 'admin') {
                         ?>
@@ -86,7 +86,8 @@
                                 </div>
                             </div>
                         </form>
-
+                </div>
+                <div class="container-fluid p-4 ml-1 rounded mt-4" style="background-color: whitesmoke">
                         <h5>Sparepart</h5>
                         <?php
                     }
