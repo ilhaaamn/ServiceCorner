@@ -128,7 +128,7 @@
                                     <tr>
                                         <td><input type="text" name="item_name[]" id="nama_1" class="form-control item_name" /></td>
                                         <td><input type="text" name="item_price[]" id="harga_1" class="form-control item_price" style="text-align: right" readonly/></td>
-                                        <td><input type="text" name="item_quantity[]" id="quantity_1" class="form-control item_quantity" /></td>
+                                        <td><input type="number" name="item_quantity[]" id="quantity_1" class="form-control item_quantity" /></td>
                                         <td><button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="lnr lnr-circle-minus"></span></button></td>
                                     </tr>
                                 </table>
@@ -223,6 +223,7 @@
 
                                 document.getElementById('nama_'+index).value = name;
                                 document.getElementById('harga_'+index).value = harga;
+                                document.getElementById('quantity_'+index).value = 1;
 
                             }
                         }

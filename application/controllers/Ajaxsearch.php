@@ -21,8 +21,8 @@ class Ajaxsearch extends CI_Controller {
             $search = $_POST['search'];
 
 //            $query = "SELECT * FROM data_sparepart WHERE nama like'%".$search."%'";
-//            $result = $this->ModelSparepart->getLike($search);
-            $result = $this->ModelSparepart->getAll();
+            $result = $this->ModelSparepart->getLike($search);
+           // $result = $this->ModelSparepart->getAll();
             foreach($result as $row){
                 $response[] = array("value"=>$row->id_part,"label"=>$row->nama, "desc"=>$row->harga);
             }
